@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2ff;
+  padding: 20px;
+  color: #222;
+}
+
+button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #1e3a8a;
+}
+
+#frase {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
