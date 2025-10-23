@@ -3,10 +3,13 @@ const BASE = "https://jsonplaceholder.typicode.com/posts";
 const salida = document.getElementById("salida");
 
 function show(data) {
-  salida.textContent = typeof data === "string"
-    ? data
-    : JSON.stringify(data, null, 2);
+  if (typeof data === "string") {
+    salida.textContent = data;
+  } else {
+    salida.textContent = JSON.stringify(data, null, 2);
+  }
 }
+
 
 async function doGet() {
   try {
@@ -21,8 +24,13 @@ async function doPost() {
     const r = await fetch(BASE, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "Nuevo post", body: "Texto de prueba", userId: 1 })
-    });
+      body: JSON.stringify(
+      { 
+        title: "Nuevo post", 
+        body: "Texto de prueba", 
+        userId: 1 
+      })
+     });
     const d = await r.json();
     show(d);
   } catch (e) { show("POST error: " + e.message); }
@@ -33,7 +41,13 @@ async function doPut() {
     const r = await fetch(`${BASE}/1`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: 1, title: "Post actualizado", body: "Contenido modificado", userId: 1 })
+      body: JSON.stringify(
+      { 
+        id: 1, 
+        title: "Post actualizado", 
+        body: "Contenido modificado", 
+        userId: 1 
+      })
     });
     const d = await r.json();
     show(d);
@@ -45,7 +59,10 @@ async function doPatch() {
     const r = await fetch(`${BASE}/1`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "Título (PATCH)" })
+      body: JSON.stringify(
+      { 
+        title: "Título (PATCH)" 
+      })
     });
     const d = await r.json();
     show(d);
